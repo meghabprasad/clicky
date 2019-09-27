@@ -1,32 +1,29 @@
 .titleBar {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 30px;
   color: white;
+  margin-top: 20px;
   margin-bottom: 10px;
   background-color:black;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Dosis', sans-serif;
 }
 .message {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: purple;
+  background-color: rgb(211, 83, 83);
   color:white !important;
   font-weight: bold;
   margin-bottom: 10px;
   font-family: 'Dosis', sans-serif;
   font-size: 40px;
 }
-/* a.message {
-  color: white !important;
-} */
 .score{
   font-family: 'Dosis', sans-serif;
   font-size: 40px;
 }
-
 .scoreDiv{
   margin-right: 40px;
 }

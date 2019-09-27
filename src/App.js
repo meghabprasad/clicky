@@ -6,7 +6,6 @@ import fruits from "./fruits.json";
 import Jumbotron from "./components/Jumbotron";
 
 class App extends Component {
-  // Setting this.state.fruits to the fruits json array
   state = {
     fruits,
     clickedId: [],
@@ -21,61 +20,54 @@ class App extends Component {
   }
 
   handleClick = (id, name) => {
-
-    //check to see if they have clicked this card. 
     let clickedIdCopy = this.state.clickedId;
-    //console.log(clickedIdCopy);
-      if (clickedIdCopy.includes(id)){
-        //If they have clicked, send message
-        this.setState({ message: `You already clicked ${name}. You lose`});
-        let tempCount = this.state.count;
-        //only change topScore if the tempCount is greater than topScore 
-        //if (tempCount > this.state.count){this.setState({ topScore: tempCount})};
-        if (tempCount > this.state.topScore){
-          this.setState({ topScore: tempCount});
-        }
-        
-        this.setState({ count: 0 })
-        clickedIdCopy = [];
-        this.setState({ clickedId : clickedIdCopy });
-        let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
-        this.setState({ shuffledFruits });
-      } 
-        //else add the id of the card to the clickedId array
-
-      else {
-        const newClicked = this.state.clickedId;
-        newClicked.push(id);
-        this.setState({ clickedId: newClicked});
-        this.setState({ message: `You just clicked ${name}`});
-        let newCount = this.state.count + 1;
-        this.setState({count: newCount});
-        let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
-        this.setState({ shuffledFruits });
-      }
-
-      if (clickedIdCopy.length === 12){
-        this.setState({ message: `You Won! Click any fruit to play again!`});
-        let tempCount = this.state.count + 1;
+    if (clickedIdCopy.includes(id)){
+      this.setState({ message: `You already clicked ${name}. You lose`});
+      let tempCount = this.state.count;
+      if (tempCount > this.state.topScore){
         this.setState({ topScore: tempCount});
-        this.setState({ count: 0 })
-        clickedIdCopy = [];
-        this.setState({ clickedId : clickedIdCopy });
-        let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
-        this.setState({ shuffledFruits });
       }
-  }
+      clickedIdCopy = [];
+      let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
+      this.setState({ 
+        count: 0,
+        clickedId: clickedIdCopy,
+        shuffledFruits
+      })
+    }
+    else {
+      const newClicked = this.state.clickedId;
+      newClicked.push(id);
+      let newCount = this.state.count + 1;
+      let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
+      this.setState({ 
+        clickedId: newClicked,
+        message: `You just clicked ${name}`,
+        count: newCount,
+        shuffledFruits 
+      });
+    }
 
-  // Map over this.state.fruits and render a fruitCard component for each fruit object
+    let winningScore = 12;
+    if (clickedIdCopy.length === winningScore){
+      let tempCount = this.state.count + 1;
+      clickedIdCopy = [];
+      let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
+      this.setState({ 
+        message: `You Won! Click any fruit to play again!`,
+        topScore: tempCount,
+        count: 0,
+        clickedId: clickedIdCopy,
+        shuffledFruits
+      });
+    }
+  }
   render() {
     return (
       <div>
-      <Title count={this.state.count} topScore={this.state.topScore} message={this.state.message}>Clicky Fruits</Title>
-      <Jumbotron handleStart={this.handleStart} showGame={this.state.showGame}/>
-      <Wrapper showGame = {this.state.showGame}>
-        {/* <h1>{this.state.message}</h1>
-        <h1>Current Count: {this.state.count}</h1>
-        <h1>Top Score: {this.state.topScore}</h1> */}
+        <Title count={this.state.count} topScore={this.state.topScore} message={this.state.message}>Clicky Fruits</Title>
+        <Jumbotron handleStart={this.handleStart} showGame={this.state.showGame}/>
+        <Wrapper showGame = {this.state.showGame}>
         {this.state.fruits.map(fruit => (
           <FruitCard
             handleClick={this.handleClick}
@@ -85,7 +77,7 @@ class App extends Component {
             name={fruit.name}
           />
         ))}
-      </Wrapper>
+        </Wrapper>
       </div>
     );
   } 
