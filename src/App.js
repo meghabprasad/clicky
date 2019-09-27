@@ -23,16 +23,18 @@ class App extends Component {
   handleClick = (id, name) => {
 
     //check to see if they have clicked this card. 
-      let clickedIdCopy = this.state.clickedId;
-      console.log(clickedIdCopy);
-
+    let clickedIdCopy = this.state.clickedId;
+    //console.log(clickedIdCopy);
       if (clickedIdCopy.includes(id)){
         //If they have clicked, send message
         this.setState({ message: `You already clicked ${name}. You lose`});
         let tempCount = this.state.count;
         //only change topScore if the tempCount is greater than topScore 
         //if (tempCount > this.state.count){this.setState({ topScore: tempCount})};
-        this.setState({ topScore: tempCount});
+        if (tempCount > this.state.topScore){
+          this.setState({ topScore: tempCount});
+        }
+        
         this.setState({ count: 0 })
         clickedIdCopy = [];
         this.setState({ clickedId : clickedIdCopy });
