@@ -19,6 +19,10 @@ class App extends Component {
     this.setState({showGame: true});
   }
 
+  shuffleFruits = () => {
+    return this.state.fruits.sort(() => Math.random() - 0.5);
+  }
+
   handleClick = (id, name) => {
     let clickedIdCopy = this.state.clickedId;
     if (clickedIdCopy.includes(id)){
@@ -28,7 +32,7 @@ class App extends Component {
         this.setState({ topScore: tempCount});
       }
       clickedIdCopy = [];
-      let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
+      let shuffledFruits = this.shuffleFruits();
       this.setState({ 
         count: 0,
         clickedId: clickedIdCopy,
@@ -39,7 +43,7 @@ class App extends Component {
       const newClicked = this.state.clickedId;
       newClicked.push(id);
       let newCount = this.state.count + 1;
-      let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
+      let shuffledFruits = this.shuffleFruits();
       this.setState({ 
         clickedId: newClicked,
         message: `You just clicked ${name}`,
@@ -52,7 +56,7 @@ class App extends Component {
     if (clickedIdCopy.length === winningScore){
       let tempCount = this.state.count + 1;
       clickedIdCopy = [];
-      let shuffledFruits = this.state.fruits.sort(() => Math.random() - 0.5);
+      let shuffledFruits = this.shuffleFruits();
       this.setState({ 
         message: `You Won! Click any fruit to play again!`,
         topScore: tempCount,
