@@ -12,7 +12,7 @@ function Title(props) {
       </div>
       </div>
       <div>
-      <a className="message">{props.message}</a>
+      <p className="message">{props.message}</p>
       </div>
     </div>
     

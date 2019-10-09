@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  font-size: 30px;
+  font-size: 20px !important;
   color: white;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -25,5 +25,5 @@
   font-size: 40px;
 }
 .scoreDiv{
-  margin-right: 40px;
+  margin-right: 20px;
 }
