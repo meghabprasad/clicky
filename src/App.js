@@ -26,24 +26,26 @@ class App extends Component {
   handleClick = (id, name) => {
     let clickedIdCopy = this.state.clickedId;
     if (clickedIdCopy.includes(id)){
-      this.setState({ message: `You already clicked ${name}. You lose`});
       let tempCount = this.state.count;
-      if (tempCount > this.state.topScore){
-        this.setState({ topScore: tempCount});
+      let tempTopScore = this.state.topScore;
+      if (tempCount > tempTopScore){
+        tempTopScore = tempCount;
       }
       clickedIdCopy = [];
       let shuffledFruits = this.shuffleFruits();
       this.setState({ 
+        message: `You already clicked ${name}. You lose`,
         count: 0,
         clickedId: clickedIdCopy,
+        topScore: tempTopScore,
         shuffledFruits
       })
     }
     else {
       const newClicked = this.state.clickedId;
-      newClicked.push(id);
       let newCount = this.state.count + 1;
       let shuffledFruits = this.shuffleFruits();
+      newClicked.push(id);
       this.setState({ 
         clickedId: newClicked,
         message: `You just clicked ${name}`,
@@ -52,7 +54,7 @@ class App extends Component {
       });
     }
 
-    let winningScore = 12;
+    const winningScore = 12;
     if (clickedIdCopy.length === winningScore){
       let tempCount = this.state.count + 1;
       clickedIdCopy = [];
