@@ -42,34 +42,30 @@ class App extends Component {
         shuffledFruits
       })
     }
-    else {
-      if (clickedIdCopy.length === winningScore){
-        let tempCount = this.state.count + 1;
-        let shuffledFruits = this.shuffleFruits();
-        clickedIdCopy = [];
-        this.setState({ 
-          message: `You Won! Click any fruit to play again!`,
-          topScore: tempCount,
-          count: 0,
-          clickedId: clickedIdCopy,
-          shuffledFruits
-        });
-      }
-      else {
-        const newClicked = this.state.clickedId;
-        let newCount = this.state.count + 1;
-        let shuffledFruits = this.shuffleFruits();
-        newClicked.push(id);
-        this.setState({ 
-          clickedId: newClicked,
-          message: `You just clicked ${name}`,
-          count: newCount,
-          shuffledFruits 
-        }); 
-      }
+    else if (clickedIdCopy.length === winningScore){
+      let tempCount = this.state.count + 1;
+      let shuffledFruits = this.shuffleFruits();
+      clickedIdCopy = [];
+      this.setState({ 
+        message: `You Won! Click any fruit to play again!`,
+        topScore: tempCount,
+        count: 0,
+        clickedId: clickedIdCopy,
+        shuffledFruits
+      });
     }
-
-
+    else {
+      const newClicked = this.state.clickedId;
+      let newCount = this.state.count + 1;
+      let shuffledFruits = this.shuffleFruits();
+      newClicked.push(id);
+      this.setState({ 
+        clickedId: newClicked,
+        message: `You just clicked ${name}`,
+        count: newCount,
+        shuffledFruits 
+      }); 
+    }
   }
   render() {
     return (
