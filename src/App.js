@@ -57,8 +57,8 @@ class App extends Component {
     const winningScore = 12;
     if (clickedIdCopy.length === winningScore){
       let tempCount = this.state.count + 1;
-      clickedIdCopy = [];
       let shuffledFruits = this.shuffleFruits();
+      clickedIdCopy = [];
       this.setState({ 
         message: `You Won! Click any fruit to play again!`,
         topScore: tempCount,
