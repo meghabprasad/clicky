@@ -2,6 +2,8 @@
 
 Built by Megha Bindiganavale
 
+Go to https://clicky-fruits.herokuapp.com/ to begin :) 
+
 What is it?
 
     A simple React memory game
