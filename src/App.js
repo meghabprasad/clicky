@@ -23,6 +23,10 @@ class App extends Component {
     return this.state.fruits.sort(() => Math.random() - 0.5);
   }
 
+  //While I have worked on several projects that required API integration, database management through mySQL and MongoDB, and other third-party integrations, I personally take pride in this memory game project I built from scratch using React and ES6. 
+  //I am particularly proud of creating my own shuffle function (highlighted) that shuffles all the fruit cards after each selection and they way I keep score 
+    // Current Score which keeps track of each unique selection and Top Score which is the longest consecutive selection of unique fruits.
+
   handleClick = (id, name) => {
     const winningScore = 12;
     let clickedIdCopy = this.state.clickedId;
