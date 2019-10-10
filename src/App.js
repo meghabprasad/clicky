@@ -26,7 +26,8 @@ class App extends Component {
   handleClick = (id, name) => {
     const winningScore = 12;
     let clickedIdCopy = this.state.clickedId;
-    if (clickedIdCopy.includes(id)){
+
+   if (clickedIdCopy.includes(id)){
       let tempCount = this.state.count;
       let tempTopScore = this.state.topScore;
       if (tempCount > tempTopScore){
@@ -42,18 +43,6 @@ class App extends Component {
         shuffledFruits
       })
     }
-    else if (clickedIdCopy.length === winningScore){
-      let tempCount = this.state.count + 1;
-      let shuffledFruits = this.shuffleFruits();
-      clickedIdCopy = [];
-      this.setState({ 
-        message: `You Won! Click any fruit to play again!`,
-        topScore: tempCount,
-        count: 0,
-        clickedId: clickedIdCopy,
-        shuffledFruits
-      });
-    }
     else {
       const newClicked = this.state.clickedId;
       let newCount = this.state.count + 1;
@@ -65,6 +54,18 @@ class App extends Component {
         count: newCount,
         shuffledFruits 
       }); 
+    }
+    if (clickedIdCopy.length === winningScore){
+      let tempCount = this.state.count + 1;
+      let shuffledFruits = this.shuffleFruits();
+      clickedIdCopy = [];
+      this.setState({ 
+        message: `You Won! Click any fruit to play again!`,
+        topScore: tempCount,
+        count: 0,
+        clickedId: clickedIdCopy,
+        shuffledFruits
+      });
     }
   }
   render() {
@@ -87,5 +88,4 @@ class App extends Component {
     );
   } 
 }
-
 export default App;
