@@ -19,7 +19,7 @@ Game functionality:
 Tech Used:
 
     - React
-    - JS
+    - JS (ES6)
     - Git
     - Bootstrap
 
