@@ -2,7 +2,7 @@
 
 Built by Megha Bindiganavale
 
-Go to https://clicky-fruits.herokuapp.com/ to begin :) 
+Go to https://clicky-fruits.herokuapp.com/ to begin. It takes a minute to load :) 
 
 What is it?
 
